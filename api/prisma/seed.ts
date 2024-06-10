@@ -33,7 +33,7 @@ async function seed() {
     data: {
       name: faker.commerce.productName(),
       imageUrl: "",
-      description: faker.lorem.paragraphs(10),
+      description: faker.lorem.paragraphs(1),
       priceInCents: Number(faker.commerce.price({ min: 10, max: 100 })),
       ingredients: [
         faker.commerce.productName(),
@@ -47,7 +47,7 @@ async function seed() {
     data: {
       name: faker.commerce.productName(),
       imageUrl: "",
-      description: faker.lorem.paragraphs(10),
+      description: faker.lorem.paragraphs(1),
       priceInCents: Number(faker.commerce.price({ min: 10, max: 100 })),
       ingredients: [
         faker.commerce.productName(),
@@ -62,7 +62,7 @@ async function seed() {
       name: faker.commerce.productName(),
       imageUrl: "",
       priceInCents: Number(faker.commerce.price({ min: 10, max: 100 })),
-      description: faker.lorem.paragraphs(10),
+      description: faker.lorem.paragraphs(1),
       ingredients: [
         faker.commerce.productName(),
         faker.commerce.productName(),

@@ -11,10 +11,13 @@
   "author": "felipe",
   "license": "MIT",
   "dependencies": {
+    "@fastify/swagger": "^8.14.0",
+    "@fastify/swagger-ui": "^3.1.0",
     "@prisma/client": "^5.15.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
     "fastify": "^4.27.0",
+    "fastify-type-provider-zod": "^1.2.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
