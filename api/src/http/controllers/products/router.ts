@@ -1,6 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { getProducts } from "./get-products";
 import { createProducts } from "./create-products";
+import { searchProducts } from "./search-products";
 
 export async function productsRoute(app: FastifyInstance) {
   app.get(
@@ -12,6 +13,16 @@ export async function productsRoute(app: FastifyInstance) {
       },
     },
     getProducts
+  );
+  app.get(
+    "/products/search/:query",
+    {
+      schema: {
+        tags: ["product"],
+        summary: "Search Product",
+      },
+    },
+    searchProducts
   );
 
   app.post(
