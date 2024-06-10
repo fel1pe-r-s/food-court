@@ -18,13 +18,11 @@ export async function createProducts(
   reply: FastifyReply
 ) {
   const productPrismaRepository = new ProductPrismaRepository();
-  const createProductsUseCase = new CreateProductsUseCase(
-    productPrismaRepository
-  );
+  const createProducts = new CreateProductsUseCase(productPrismaRepository);
 
   const { name, description, priceInCents, imageUrl, ingredients, favourite } =
     createProductUseCaseRequest.parse(request.body);
-  const product = await createProductsUseCase.execute({
+  const product = await createProducts.execute({
     name,
     description,
     priceInCents,

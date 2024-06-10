@@ -13,6 +13,7 @@ export async function productsRoute(app: FastifyInstance) {
     },
     getProducts
   );
+
   app.post(
     "/product",
     {

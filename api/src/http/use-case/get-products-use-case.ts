@@ -17,7 +17,7 @@ interface GetProductUseCaseResponse {
 export class GetProductsUseCase {
   constructor(private productRepository: ProductPrismaRepository) {}
   async execute(): Promise<GetProductUseCaseResponse> {
-    const products = await this.productRepository.searchMany();
+    const products = await this.productRepository.getMany();
     return {
       products,
     };

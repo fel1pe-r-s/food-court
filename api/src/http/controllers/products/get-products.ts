@@ -7,8 +7,8 @@ export async function getProducts(
   reply: FastifyReply
 ) {
   const productPrismaRepository = new ProductPrismaRepository();
-  const getProductsProfile = new GetProductsUseCase(productPrismaRepository);
-  let { products } = await getProductsProfile.execute();
+  const getProducts = new GetProductsUseCase(productPrismaRepository);
+  let { products } = await getProducts.execute();
 
   return reply.status(200).send({
     products,
