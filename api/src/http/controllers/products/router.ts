@@ -5,6 +5,7 @@ import { searchProducts } from "./search-products";
 import { verifYUserRole } from "@/http/middlewares/verify-user-role";
 import { verifyJWT } from "@/http/middlewares/verify-jwt";
 import { updateProducts } from "./update-product";
+import { deleteProducts } from "./delete-products";
 
 export async function productsRoute(app: FastifyInstance) {
   app.get(
@@ -49,5 +50,16 @@ export async function productsRoute(app: FastifyInstance) {
       },
     },
     updateProducts
+  );
+  app.delete(
+    "/product/:id",
+    {
+      onRequest: [verifYUserRole("ADMIN")],
+      schema: {
+        tags: ["product"],
+        summary: "create Product",
+      },
+    },
+    deleteProducts
   );
 }

@@ -42,4 +42,12 @@ export class ProductPrismaRepository {
 
     return products;
   }
+  async delete(id: string) {
+    const isDelete = await prisma.product.delete({
+      where: {
+        id: id,
+      },
+    });
+    return isDelete;
+  }
 }
