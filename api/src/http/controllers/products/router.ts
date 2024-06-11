@@ -2,6 +2,8 @@ import { FastifyInstance } from "fastify";
 import { getProducts } from "./get-products";
 import { createProducts } from "./create-products";
 import { searchProducts } from "./search-products";
+import { verifYUserRole } from "@/http/middlewares/verify-user-role";
+import { verifyJWT } from "@/http/middlewares/verify-jwt";
 
 export async function productsRoute(app: FastifyInstance) {
   app.get(
@@ -24,13 +26,14 @@ export async function productsRoute(app: FastifyInstance) {
     },
     searchProducts
   );
-
+  app.addHook("onRequest", verifyJWT);
   app.post(
     "/product",
     {
+      onRequest: [verifYUserRole("ADMIN")],
       schema: {
         tags: ["product"],
-        summary: "Create Product",
+        summary: "create Product",
       },
     },
     createProducts

@@ -1,5 +1,6 @@
 import { FastifyInstance } from "fastify";
 import { registerProducts } from "./register";
+import { authenticate } from "./authentication";
 
 export async function registerRoute(app: FastifyInstance) {
   app.post(
@@ -11,5 +12,16 @@ export async function registerRoute(app: FastifyInstance) {
       },
     },
     registerProducts
+  );
+
+  app.post(
+    "/sessions",
+    {
+      schema: {
+        tags: ["Authentication"],
+        summary: "Authenticate User",
+      },
+    },
+    authenticate
   );
 }

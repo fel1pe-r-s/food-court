@@ -4,6 +4,9 @@ import fastifySwaggerUi from "@fastify/swagger-ui";
 import { jsonSchemaTransform } from "fastify-type-provider-zod";
 import { productsRoute } from "@/http/controllers/products/router";
 import { registerRoute } from "./http/controllers/users/router";
+import fastifyCookie from "@fastify/cookie";
+import fastifyJwt from "@fastify/jwt";
+import { env } from "process";
 
 export const app = Fastify({
   logger: true,
@@ -27,6 +30,18 @@ app.register(fastifySwagger, {
     },
   },
   transform: jsonSchemaTransform,
+});
+
+app.register(fastifyCookie);
+app.register(fastifyJwt, {
+  secret: "secret",
+  cookie: {
+    cookieName: "refreshToken",
+    signed: false,
+  },
+  sign: {
+    expiresIn: "10m",
+  },
 });
 
 app.register(fastifySwaggerUi, {

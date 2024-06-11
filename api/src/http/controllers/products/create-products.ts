@@ -1,5 +1,4 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { GetProductsUseCase } from "../../use-case/get-products-use-case";
 import { ProductPrismaRepository } from "../../repositories/prisma-products";
 import { CreateProductsUseCase } from "@/http/use-case/create-products-use-case";
 import { z } from "zod";
