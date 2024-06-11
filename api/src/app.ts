@@ -9,7 +9,7 @@ import fastifyJwt from "@fastify/jwt";
 import { env } from "process";
 
 export const app = Fastify({
-  logger: true,
+  logger: false,
 });
 
 app.register(fastifySwagger, {

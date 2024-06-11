@@ -7,7 +7,6 @@ export class ProductPrismaRepository {
       data,
     });
   }
-
   async getMany() {
     const products = await prisma.product.findMany();
     return products;
@@ -30,6 +29,17 @@ export class ProductPrismaRepository {
         ],
       },
     });
+    return products;
+  }
+
+  async update(id: string, product: Prisma.ProductUpdateInput) {
+    const products = await prisma.product.update({
+      where: {
+        id: id,
+      },
+      data: product,
+    });
+
     return products;
   }
 }
